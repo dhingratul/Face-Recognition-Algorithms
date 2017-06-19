@@ -1,3 +1,6 @@
+%% Outputs the output label based on Predicted values
+% Input: W, mu, labeltr, train, labelte, test, k
+% Output: Output Label
 function[outlabel] = outputlabel(W,mu,labeltr,train,labelte,test,k)
 %% Recognition
 outlabel=[];
@@ -10,6 +13,6 @@ for j=1:length(labelte)
     [match_score, match_ix] = max(similarity_score);
     temp=labeltr(match_ix,1);
     % display the result
-    outlabel=[outlabel;temp];   
+    outlabel=[outlabel;temp];
 end
 end
