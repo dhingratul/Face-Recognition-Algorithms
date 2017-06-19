@@ -1,3 +1,4 @@
+%% SVM Function
 addpath('/home/labuser/Dropbox/Academics/Spring2016/ECE-539/Project/Mid-Term/Code/References/libsvm-3.21/matlab');
 load YaleB_32x32.mat;
 out=[];
@@ -8,11 +9,11 @@ out=[];
 % features=double(features);
 param=0.001:0.001:0.2;
 for i=param
-[train,test,labeltr,labelte]=datapartition(fea,gnd,param);
-c=1e9;
+    [train,test,labeltr,labelte]=datapartition(fea,gnd,param);
+    c=1e9;
     params=[' -t ' int2str(0) ];
-model = svmtrain(labeltr, train, params);
-[predicted_label, accuracy, decision_v] = svmpredict(labelte, test ,model);
-out=[out;accuracy];
+    model = svmtrain(labeltr, train, params);
+    [predicted_label, accuracy, decision_v] = svmpredict(labelte, test ,model);
+    out=[out;accuracy];
 end
 
