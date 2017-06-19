@@ -1,4 +1,4 @@
-%% SRC
+%% Sparse Representation based Classification
 clear all; close all;
 load YaleB_32x32.mat
 addpath /home/labuser/Dropbox/Academics/Spring2016/ECE-539/Project/Mid-Term/Code/References/spgl1-1.9;
