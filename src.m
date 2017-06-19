@@ -16,13 +16,13 @@ for i=1:size(test,1)
         startidx=idx(1,1);endidx=idx(end,1);
         r(j)=norm(test(i,:)'-(train(startidx:endidx,:)'*x(startidx:endidx,i)));
     end
- [~,index]=min(r);
- outlabel=[outlabel;index];
+    [~,index]=min(r);
+    outlabel=[outlabel;index];
 end
 %% Accuracy
 for i=1:length(labelte)
     if(labelte(i)==outlabel(i))
-      count = count+1;
+        count = count+1;
     end
 end
 acc=count/length(labelte)
