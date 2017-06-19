@@ -1,3 +1,4 @@
+%% Main file
 clear all;close all;clc;
 outlabel=[]; count=0;
 k=50; % Number of principle components
