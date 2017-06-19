@@ -1,29 +1,32 @@
-function [W , mu ] = pca (X , y , k)
+%% PCA version2
+% Input: X, y, k
+% Output: W, mu
+function [W , mu ] = pca2 (X , y , k)
 [n , d] = size (X );
 mu = mean (X);
 Xm = X - repmat (mu , size(X,1) , 1) ;
 if(n >d )
-C = Xm'* Xm ;
-[W , D] = eig (C) ;
-% sort eigenvalues and eigenvectors
-[D , i] = sort ( diag (D) , 'descend');
-W = W (: , i );
-% keep k components
-W = W (: ,1: k);
+    C = Xm'* Xm ;
+    [W , D] = eig (C) ;
+    % sort eigenvalues and eigenvectors
+    [D , i] = sort ( diag (D) , 'descend');
+    W = W (: , i );
+    % keep k components
+    W = W (: ,1: k);
 else
-C = Xm *Xm';
-%C = cov(Xm ’);
-[W , D] = eig (C) ;
-% multiply with data matrix
-W = Xm'* W ;
-% normalize eigenvectors
-for i =1: n
-W (: , i) = W (: , i )/ norm (W (: , i)) ;
-end
-% sort eigenvalues and eigenvectors
-[D , i] = sort ( diag (D) , 'descend');
-W = W (: , i );
-% keep k components
-W = W (: ,1: k);
+    C = Xm *Xm';
+    %C = cov(Xm ’);
+    [W , D] = eig (C) ;
+    % multiply with data matrix
+    W = Xm'* W ;
+    % normalize eigenvectors
+    for i =1: n
+        W (: , i) = W (: , i )/ norm (W (: , i)) ;
+    end
+    % sort eigenvalues and eigenvectors
+    [D , i] = sort ( diag (D) , 'descend');
+    W = W (: , i );
+    % keep k components
+    W = W (: ,1: k);
 end
 end
