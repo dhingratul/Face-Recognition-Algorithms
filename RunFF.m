@@ -1,5 +1,5 @@
 %% Run Fischer Faces
-p=[10,20,30,40,50];
+p=[10,20,30,40,50]
 k=100;
 ctr=1;
 for idx=p
