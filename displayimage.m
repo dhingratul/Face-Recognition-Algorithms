@@ -1,3 +1,6 @@
+%% Displays image from a concatenated vector
+% Input: Imagevector
+% Output: Corresponding image
 function []= displayimage(imagevector)
 %% Display average
 imagevector=uint8(imagevector);
