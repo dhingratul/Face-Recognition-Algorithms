@@ -1,4 +1,5 @@
 %% Partitions the data into training, testing data based on p-values(Splits)
+%% Partitions the data into train and test sets
 % Input: Features, labels, p
 % Output: Train, Test, Label-tr, Label-te
 function[train,test,labeltr,labelte]=datapartition(features,labels,p)
