@@ -1,3 +1,7 @@
+%% Computes LDA
+% Input: X, y, k
+% Output: W, mu
+
 clear all;close all;clc;
 load YaleB_32x32.mat;
 [train,test,labeltr,labelte]=datapartition(fea,gnd,0.1);
@@ -18,12 +22,12 @@ Sb = zeros (d , d);
 mu = mean (X);
 % calculate scatter matrices
 for i = 1: C
-Xi = X( find (y == labels ( i)) ,:) ; % samples for current class
-n = rows ( Xi );
-mu_i = mean ( Xi ); % mean vector for current class
-Xi = Xi - repmat ( mu_i , n , 1) ;
-Sw = Sw + Xi ’* Xi ;
-Sb = Sb + n * ( mu_i - mu ) ’*( mu_i - mu );
+    Xi = X( find (y == labels ( i)) ,:) ; % samples for current class
+    n = rows ( Xi );
+    mu_i = mean ( Xi ); % mean vector for current class
+    Xi = Xi - repmat ( mu_i , n , 1) ;
+    Sw = Sw + Xi ’* Xi ;
+    Sb = Sb + n * ( mu_i - mu ) ’*( mu_i - mu );
 end
 % solve general eigenvalue problem
 [W , D] = eig( Sb , Sw );
