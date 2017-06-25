@@ -1,3 +1,6 @@
+%% LDA (version 2)
+% Input: X, y, k
+% Output: W, mu
 function [W , mu ] = lda2 (X ,y , k)
 % dimension of observation
 [n , d] = size (X);
@@ -11,13 +14,13 @@ Sb = zeros (d , d);
 mu = mean (X);
 % calculate scatter matrices
 for i = 1: C
-temp=find (y == labels (i)) ; % samples for current class
-Xi = X(temp(1,1):temp(end,1),:);
-n = size( Xi,1 );
-mu_i = mean ( Xi ); % mean vector for current class
-Xi = Xi - repmat ( mu_i , n , 1) ;
-Sw = Sw + Xi'* Xi ;
-Sb = Sb + n * ( mu_i - mu )'*( mu_i - mu );
+    temp=find (y == labels (i)) ; % samples for current class
+    Xi = X(temp(1,1):temp(end,1),:);
+    n = size( Xi,1 );
+    mu_i = mean ( Xi ); % mean vector for current class
+    Xi = Xi - repmat ( mu_i , n , 1) ;
+    Sw = Sw + Xi'* Xi ;
+    Sb = Sb + n * ( mu_i - mu )'*( mu_i - mu );
 end
 % solve general eigenvalue problem
 [W , D] = eig( Sb , Sw );
