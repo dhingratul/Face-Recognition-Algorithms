@@ -1,3 +1,4 @@
+%% Displays 1st fifteen eigen faces
 clear all;
 close all;
 load YaleB_32x32.mat
@@ -22,6 +23,6 @@ figure,subplot(4,4,1)
 imagesc(eig0)
 colormap gray
 for i = 1:15
-subplot(4,4,i+1)
-imagesc(reshape(V(:,i),h,w))
+    subplot(4,4,i+1)
+    imagesc(reshape(V(:,i),h,w))
 end
